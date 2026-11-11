@@ -3,50 +3,54 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Consciência Negra e Educação Financeira</title>
+<title>Consciência Negra, classe social e dinheiro</title>
 <style>
-:root{--bg:#faf6ef;--card:#fff;--ink:#1f1b16;--mut:#6b625a;--ac:#b8441f;--ac2:#2f5d50;--bd:#e4dccf;--ok:#2f5d50}
-@media (prefers-color-scheme:dark){:root{--bg:#17140f;--card:#211d17;--ink:#f3ece1;--mut:#a89d8e;--ac:#e07a4f;--ac2:#6fb39e;--bd:#3a332a;--ok:#6fb39e}}
+:root{--bg:#faf6ef;--card:#fff;--ink:#1f1b16;--mut:#6b625a;--ac:#b8441f;--ac2:#2f5d50;--bd:#e4dccf}
+@media (prefers-color-scheme:dark){:root{--bg:#17140f;--card:#211d17;--ink:#f3ece1;--mut:#a89d8e;--ac:#e07a4f;--ac2:#6fb39e;--bd:#3a332a}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
 .wrap{max-width:720px;margin:0 auto;padding:20px 16px 60px}
-header{padding:8px 0 4px}
 .tag{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ac);font-weight:700}
 h1{font-size:28px;line-height:1.2;margin:6px 0 4px;font-family:Georgia,serif}
 .sub{color:var(--mut);margin:0 0 14px}
 .bar{height:6px;background:var(--bd);border-radius:9px;overflow:hidden;margin:10px 0 18px}
 .bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
 .card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:16px}
-h2{font-family:Georgia,serif;font-size:22px;margin:0 0 10px}
+h2{font-family:Georgia,serif;font-size:22px;margin:0 0 10px;line-height:1.25}
+h3{font-size:17px;margin:16px 0 4px}
 p{margin:0 0 12px}
 label{display:block;font-weight:600;margin:12px 0 4px}
 input[type=text],select,textarea{width:100%;font:inherit;padding:11px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--ink)}
-textarea{min-height:110px;resize:vertical}
+textarea{min-height:140px;resize:vertical}
 .btn{font:inherit;font-weight:700;padding:12px 20px;border:0;border-radius:10px;background:var(--ac);color:#fff;cursor:pointer;margin-top:8px}
 .btn.sec{background:transparent;color:var(--ink);border:1px solid var(--bd);margin-right:8px}
-.btn:disabled{opacity:.4;cursor:not-allowed}
 .opt{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;border:1px solid var(--bd);border-radius:10px;margin:8px 0;cursor:pointer;background:var(--bg)}
 .opt input{margin-top:5px;accent-color:var(--ac)}
 .opt.sel{border-color:var(--ac);box-shadow:0 0 0 1px var(--ac)}
 .q{font-weight:700;margin-bottom:6px}
+.pause{background:var(--bg);border-left:4px solid var(--ac);padding:12px 14px;border-radius:6px;margin:14px 0;font-size:16px}
+.pause b:first-child{color:var(--ac)}
 .note{background:var(--bg);border-left:4px solid var(--ac2);padding:12px 14px;border-radius:6px;margin:14px 0;font-size:16px}
+.cls{border:1px solid var(--bd);border-radius:10px;padding:10px 14px;margin:10px 0;background:var(--bg)}
+.cls b{display:block;color:var(--ac2)}
 .hide{display:none}
-.code{width:100%;font:13px/1.4 ui-monospace,Menlo,Consolas,monospace;word-break:break-all;min-height:120px}
+.code{font:13px/1.4 ui-monospace,Menlo,Consolas,monospace;word-break:break-all;min-height:150px}
 .small{font-size:14px;color:var(--mut)}
 .err{color:#c0392b;font-weight:600;font-size:15px}
+.book{font-style:italic}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header>
   <div class="tag">20 de novembro · Educação Financeira</div>
-  <h1>Consciência Negra, dinheiro e oportunidades</h1>
-  <p class="sub">Leia o texto, responda às questões e gere seu código para entregar ao professor.</p>
+  <h1>Consciência Negra, classe social e dinheiro</h1>
+  <p class="sub">Leia, pense, responda e gere seu código para entregar ao professor. Tempo estimado: 15 a 20 minutos.</p>
   <div class="bar"><i id="prog"></i></div>
 </header>
 
-<!-- PASSO 0: identificação -->
-<section id="s0" class="card">
+<!-- 0: identificação -->
+<section class="card">
   <h2>Antes de começar</h2>
   <label for="nome">Seu nome completo</label>
   <input type="text" id="nome" autocomplete="name">
@@ -56,53 +60,88 @@ textarea{min-height:110px;resize:vertical}
     <option>1ª D</option><option>2ª D</option><option>2ª E</option><option>3ª C (noite)</option>
   </select>
   <p id="e0" class="err hide"></p>
-  <button class="btn" id="go0">Começar a leitura</button>
+  <button class="btn" data-go="1">Começar a leitura</button>
 </section>
 
-<!-- PASSO 1: texto -->
-<section id="s1" class="card hide">
-  <h2>1. Quem foi Zumbi e por que o 20 de novembro?</h2>
-  <p>O <b>Quilombo dos Palmares</b>, na Serra da Barriga (atual Alagoas), foi o maior e mais duradouro quilombo do período colonial: uma comunidade formada por pessoas que fugiram da escravidão e construíram ali uma sociedade livre, com agricultura, comércio e organização própria. <b>Zumbi</b> foi seu último grande líder e morreu em <b>20 de novembro de 1695</b>. Por isso, essa data virou símbolo da resistência negra. Desde 2024, o <b>Dia da Consciência Negra</b> é feriado nacional.</p>
-  <h2>2. A abolição e o que veio depois</h2>
-  <p>O Brasil foi o último país das Américas a abolir a escravidão: a <b>Lei Áurea</b> é de <b>13 de maio de 1888</b>. Mas a lei não trouxe terra, moradia, trabalho remunerado, escola ou crédito para as pessoas libertas. Elas foram deixadas à própria sorte, e esse atraso se refletiu por gerações.</p>
-  <div class="note">Segundo o Censo 2022 do IBGE, pretos e pardos são mais da metade da população brasileira. Ainda assim, em média, têm renda menor do que pessoas brancas.</div>
-  <button class="btn" id="go1">Continuar</button>
+<!-- 1: história -->
+<section class="card hide">
+  <h2>1. Zumbi, Palmares e o 20 de novembro</h2>
+  <p>O <b>Quilombo dos Palmares</b>, na Serra da Barriga (hoje Alagoas), foi o maior e mais duradouro quilombo do período colonial: uma comunidade de pessoas que fugiram da escravidão e construíram ali uma sociedade com agricultura, comércio e organização própria. <b>Zumbi</b>, seu último grande líder, morreu em <b>20 de novembro de 1695</b>. Por isso a data virou símbolo da resistência negra. Desde 2024, o <b>Dia da Consciência Negra</b> é feriado nacional.</p>
+  <h2>2. A abolição que não terminou</h2>
+  <p>O Brasil foi o último país das Américas a abolir a escravidão: a <b>Lei Áurea</b> é de <b>13 de maio de 1888</b>. Mas a lei não trouxe terra, escola, moradia, emprego remunerado nem crédito para as pessoas libertas. Elas ficaram livres no papel, mas sem nenhum ponto de apoio.</p>
+  <p>O sociólogo <b>Jessé Souza</b> (autor de <span class="book">A ralé brasileira</span>, <span class="book">Os batalhadores brasileiros</span>, <span class="book">A elite do atraso</span> e <span class="book">A classe média no espelho</span>) defende que a escravidão deixou uma <b>matriz social</b>: uma forma de organizar a sociedade que continua se repetindo, hoje de modo disfarçado, na desigualdade entre quem tem e quem não tem acesso a boas escolas, bons empregos, tempo e respeito.</p>
+  <div class="pause"><b>Pare e pense:</b> Segundo o Censo 2022 do IBGE, pretos e pardos são mais da metade da população brasileira. Ainda assim, em média, têm renda menor do que pessoas brancas. Você acha que isso é coincidência?</div>
+  <button class="btn sec" data-go="0">Voltar</button><button class="btn" data-go="2">Continuar</button>
 </section>
 
-<section id="s2" class="card hide">
-  <h2>3. História, patrimônio e dinheiro</h2>
-  <p><b>Patrimônio</b> é o conjunto de bens e economias de uma pessoa ou família: casa, terreno, negócio, investimentos. Ele costuma passar de geração para geração. Quem começou sem acesso a terra, estudo e crédito teve mais dificuldade de formar patrimônio, e isso ajuda a explicar parte da desigualdade de renda que existe até hoje.</p>
-  <p>Conhecer esse contexto não é para ficar parado: é para agir. A educação financeira é uma ferramenta de autonomia.</p>
-  <h2>4. Caminhos para construir autonomia</h2>
-  <p><b>Empreender com formalização.</b> Levantamentos do Sebrae indicam que pretos e pardos são maioria entre os empreendedores do país. O <b>MEI</b> (Microempreendedor Individual) permite ter CNPJ, emitir nota fiscal e contribuir para a Previdência por meio de um pagamento mensal simplificado.</p>
-  <p><b>Poupar e investir com constância.</b> Guardar uma parte da renda todo mês, mesmo pequena, e formar uma <b>reserva de emergência</b> reduz a vulnerabilidade a imprevistos e evita dívidas caras, como o rotativo do cartão e o cheque especial.</p>
-  <p><b>Acesso à informação e ao crédito consciente.</b> Comparar taxas, ler contratos e planejar antes de parcelar fortalece quem toma crédito.</p>
-  <button class="btn sec" id="back2">Voltar</button><button class="btn" id="go2">Ir para as questões</button>
+<!-- 2: classe e herança -->
+<section class="card hide">
+  <h2>3. Classe social não é só quanto você ganha</h2>
+  <p>Para Jessé Souza, definir classe só pela renda é uma “meia verdade”. Duas pessoas podem ganhar o mesmo salário e ter vidas muito diferentes. O que separa as classes é, principalmente, a <b>herança</b> que cada pessoa recebe, e ela tem três partes:</p>
+  <div class="cls"><b>Herança econômica</b>Dinheiro, casa, terreno, negócio da família.</div>
+  <div class="cls"><b>Herança cultural</b>Estudo, livros, bom vocabulário, conhecimento de como funcionam bancos, escolas, concursos e empresas.</div>
+  <div class="cls"><b>Herança emocional</b>Aprendida em casa, sem ninguém perceber: disciplina, concentração, autocontrole e <b>pensamento de futuro</b>.</div>
+  <p>A terceira é a mais invisível. Uma criança que cresce numa casa com silêncio para estudar, adultos que dizem “você vai chegar lá” e comida garantida aprende, sem perceber, a se concentrar e a planejar. Quem cresce na urgência (ajudar a pagar a conta, cuidar dos irmãos, trabalhar cedo) aprende outra coisa: <b>sobreviver hoje</b>. Souza diz que, para quem vive só no urgente, <b>pensar no futuro é um luxo</b>.</p>
+  <div class="pause"><b>Conexão com o dinheiro:</b> poupar, planejar compras e montar reserva de emergência exigem justamente isso: poder pensar no futuro. Quando falta dinheiro até o fim do mês, planejar fica muito mais difícil, e isso não é “falta de caráter”.</div>
+  <button class="btn sec" data-go="1">Voltar</button><button class="btn" data-go="3">Continuar</button>
 </section>
 
-<!-- PASSO 3: questões -->
-<section id="s3" class="card hide">
+<!-- 3: classes brasileiras -->
+<section class="card hide">
+  <h2>4. As classes brasileiras, segundo Jessé Souza</h2>
+  <div class="cls"><b>Elite</b>Quem tem o grande dinheiro e vive principalmente da propriedade e dos lucros, como donos de grandes empresas, terras e bancos.</div>
+  <div class="cls"><b>Classe média</b>Para ele, é a classe do <b>privilégio cultural</b>: tem diplomas e conhecimento valorizado, ocupa os bons empregos e costuma reproduzir essa vantagem nos filhos (boas escolas, cursinhos, tempo livre para estudar).</div>
+  <div class="cls"><b>Batalhadores</b>Trabalhadores que sobem na vida à custa de muito esforço: jornadas de 10 a 14 horas, dois empregos, estudo à noite em escola pública ou faculdade particular, pequenos negócios próprios. Têm pouco acesso a capital econômico e cultural e quase nenhum <b>tempo</b>. Muitos se veem como “empresários de si mesmos”.</div>
+  <div class="cls"><b>Ralé</b>Palavra <b>provocativa</b>, usada por ele para <b>criticar</b>, e não para ofender: é a parcela da população que quase nunca teve acesso a escola de qualidade, a bons empregos e a reconhecimento. Faz os trabalhos mais pesados e mais mal pagos. Em grande parte, descende de pessoas escravizadas, mas não só delas.</div>
+  <p>Souza também questiona a ideia de uma “nova classe média”: segundo ele, ganhar um pouco mais não muda a classe de ninguém, porque a pessoa continua sem acesso às heranças cultural e emocional que garantem estabilidade para a família.</p>
+  <div class="pause"><b>Pare e pense:</b> muitos de vocês chegam à escola à noite depois de um dia inteiro de trabalho. É isso que Souza chama de <b>batalhar</b>. Vocês se reconhecem nessa descrição?</div>
+  <button class="btn sec" data-go="2">Voltar</button><button class="btn" data-go="4">Continuar</button>
+</section>
+
+<!-- 4: meritocracia, juros e educação financeira -->
+<section class="card hide">
+  <h2>5. Esforço importa. Mas a largada não é igual</h2>
+  <p>A <b>meritocracia</b> diz que cada um chega aonde merece pelo próprio esforço. Souza não nega o valor do esforço, mas lembra que <b>as pessoas não largam do mesmo ponto</b>. É como uma corrida em que alguns começam na linha de partida e outros 200 metros atrás. Quem chega primeiro nem sempre correu mais: pode ter largado na frente. Dizer que “quem não conseguiu foi porque não se esforçou” ignora a herança de cada um e ainda coloca a culpa em quem já partiu em desvantagem.</p>
+  <h2>6. Juros, dívidas e a história que contam</h2>
+  <p>Em <span class="book">A elite do atraso</span>, Souza argumenta que a elite financeira, a que ganha com juros e com o endividamento da população, se beneficia de uma narrativa que culpa o “jeitinho brasileiro”, o “povo preguiçoso” ou o “Estado corrupto”, e assim desvia o olhar de quem lucra com a desigualdade.</p>
+  <p>No dia a dia, isso aparece em coisas concretas: <b>cartão de crédito rotativo, cheque especial e empréstimos caros</b> pesam muito mais para quem tem renda baixa e <b>nenhuma reserva</b>. Um imprevisto (conserto, doença, falta de trabalho) vira dívida, a dívida vira juros sobre juros, e a pessoa trabalha para pagar a dívida, não para sair do lugar.</p>
+  <div class="note"><b>Outras visões:</b> essa é uma interpretação, e não a única. Outros sociólogos e economistas explicam a desigualdade dando mais peso à educação formal, à produtividade, às instituições e às políticas públicas. Vale conhecer várias e pensar com a sua cabeça.</div>
+  <h2>7. Então o que fazer?</h2>
+  <p>Entender a estrutura <b>não é desculpa para ficar parado</b>: é mais um motivo para usar bem as armas que se tem. Educação financeira, nesse contexto, significa:</p>
+  <p>• <b>Montar uma reserva de emergência</b>, mesmo pequena, para que um imprevisto não vire dívida cara.<br>
+  • <b>Fugir do rotativo e do cheque especial</b> e comparar taxas antes de parcelar ou pedir empréstimo.<br>
+  • <b>Formalizar o que se faz</b>: o MEI dá CNPJ, nota fiscal e contribuição para a Previdência.<br>
+  • <b>Investir em conhecimento</b>: cursos, certificações e leitura aumentam o capital cultural.<br>
+  • <b>Cooperar</b>: grupos de compra, cooperativas e redes de apoio, porque ninguém vence sozinho.<br>
+  • <b>Conhecer seus direitos</b> como consumidor e trabalhador.</p>
+  <p>A educação financeira <b>não substitui</b> políticas públicas de escola, saúde, moradia e emprego, mas amplia a sua margem de escolha dentro das condições que você tem.</p>
+  <button class="btn sec" data-go="3">Voltar</button><button class="btn" data-go="5">Ir para as questões</button>
+</section>
+
+<!-- 5: questões -->
+<section class="card hide">
   <h2>Questões</h2>
   <p class="small">Escolha uma alternativa em cada questão. Você não verá a nota; o professor fará a correção.</p>
   <div id="qs"></div>
-  <p id="e3" class="err hide"></p>
-  <button class="btn sec" id="back3">Voltar ao texto</button><button class="btn" id="go3">Continuar</button>
+  <p id="e5" class="err hide"></p>
+  <button class="btn sec" data-go="4">Voltar ao texto</button><button class="btn" data-go="6">Continuar</button>
 </section>
 
-<!-- PASSO 4: reflexão -->
-<section id="s4" class="card hide">
+<!-- 6: reflexão -->
+<section class="card hide">
   <h2>Reflexão</h2>
-  <p class="q">Cite uma atitude financeira (poupar, empreender, formalizar um negócio, planejar compras…) que você pode adotar para construir mais autonomia e explique por quê. Se quiser, relacione com o que leu sobre a história.</p>
-  <textarea id="refl" maxlength="400" placeholder="Escreva com suas palavras (até 400 caracteres)"></textarea>
-  <p class="small"><span id="cnt">0</span>/400</p>
-  <p id="e4" class="err hide"></p>
-  <button class="btn sec" id="back4">Voltar</button><button class="btn" id="go4">Gerar meu código</button>
+  <p class="q">Pense na sua rotina e na sua família. Em que momentos você sente que o “ponto de partida” pesa (falta de tempo, de dinheiro, de estudo, de contatos)? E que atitude financeira você pode adotar mesmo assim? Use pelo menos <b>um conceito</b> do texto (herança, classe, batalhador, meritocracia, juros, reserva de emergência).</p>
+  <p class="small">Escreva só o que se sentir à vontade para compartilhar.</p>
+  <textarea id="refl" maxlength="600" placeholder="Escreva com suas palavras (até 600 caracteres)"></textarea>
+  <p class="small"><span id="cnt">0</span>/600</p>
+  <p id="e6" class="err hide"></p>
+  <button class="btn sec" data-go="5">Voltar</button><button class="btn" id="gen">Gerar meu código</button>
 </section>
 
-<!-- PASSO 5: código -->
-<section id="s5" class="card hide">
+<!-- 7: código -->
+<section class="card hide">
   <h2>Pronto, <span id="who"></span>!</h2>
-  <p>Copie o código abaixo e envie ao professor (WhatsApp, Classroom ou mostre a tela). <b>Não altere o código.</b></p>
+  <p>Copie o código abaixo e envie ao professor (Classroom, WhatsApp ou mostre a tela). <b>Não altere o código.</b></p>
   <textarea id="code" class="code" readonly></textarea>
   <button class="btn" id="copy">Copiar código</button>
   <p id="cok" class="small hide">Código copiado.</p>
@@ -113,30 +152,31 @@ textarea{min-height:110px;resize:vertical}
 <script>
 const SALT="tiradentes-consciencia-2026";
 const QUESTOES=[
- {q:"Em que data é celebrado o Dia Nacional de Zumbi e da Consciência Negra?",o:["13 de maio","20 de novembro","7 de setembro","21 de abril"]},
- {q:"Quem foi Zumbi dos Palmares?",o:["Um rei europeu que apoiou a abolição","O autor da Lei Áurea","Último grande líder do Quilombo dos Palmares e símbolo da resistência à escravidão","Um comerciante de pessoas escravizadas"]},
- {q:"A Lei Áurea, de 13 de maio de 1888, foi importante porque:",o:["Garantiu terra, emprego e indenização aos libertos","Aboliu oficialmente a escravidão no Brasil, mas sem políticas de inclusão para os libertos","Criou o salário mínimo","Proibiu o trabalho infantil"]},
- {q:"Por que a falta de acesso a terra, educação e crédito após a abolição ainda influencia a desigualdade de renda hoje?",o:["Porque dificultou a formação de patrimônio, que passa de geração em geração","Porque pessoas negras não gostam de poupar","Porque não existe relação entre história e renda","Porque o crédito é igual para todos desde 1888"]},
- {q:"O MEI (Microempreendedor Individual) é uma alternativa para empreender porque:",o:["Dispensa qualquer pagamento de impostos","É obrigatório para todo trabalhador","Só vale para grandes empresas","Permite ter CNPJ e emitir nota fiscal com contribuição mensal simplificada"]},
- {q:"Qual atitude ajuda a construir patrimônio e reduzir a vulnerabilidade financeira?",o:["Guardar uma parte da renda todo mês e formar uma reserva de emergência","Gastar toda a renda para aproveitar o presente","Parcelar compras sem planejamento","Evitar falar sobre dinheiro"]}
+ {q:"O 20 de novembro lembra a morte de Zumbi, último grande líder de qual comunidade?",o:["Quilombo dos Palmares","Os Bandeirantes","Os Inconfidentes de Minas","A Corte Imperial"]},
+ {q:"A Lei Áurea (1888) aboliu a escravidão. Qual é a crítica feita no texto?",o:["Ela foi aplicada só em alguns estados","Ela deu terra e indenização, mas poucos aproveitaram","Ela libertou no papel, mas sem escola, terra, trabalho ou crédito para os libertos","Ela só valia para crianças"],},
+ {q:"Segundo Jessé Souza, por que definir classe social só pela renda é uma “meia verdade”?",o:["Porque a renda não importa em nada","Porque a classe também depende da herança econômica, cultural e emocional que cada pessoa recebe","Porque todas as pessoas com o mesmo salário vivem a mesma vida","Porque só existe a classe média"]},
+ {q:"Dentro do conceito de herança emocional, qual é um exemplo?",o:["Aprender em casa disciplina, concentração e a pensar no futuro","Receber uma casa de herança","Ter um diploma de faculdade","Herdar uma empresa da família"]},
+ {q:"Segundo o texto, por que planejar o futuro (poupar, montar reserva) é mais difícil para quem vive na urgência da sobrevivência?",o:["Porque essas pessoas não têm vontade de aprender","Porque a atenção está toda no “hoje”: pagar a conta, comer, trabalhar","Porque planejar é proibido para quem ganha pouco","Porque só quem ganha muito pode ter conta no banco"]},
+ {q:"Quem são os “batalhadores” descritos por Souza?",o:["Donos de grandes empresas","Trabalhadores que sobem à custa de jornadas longas, vários empregos e estudo à noite, com pouco tempo e pouco acesso a capital cultural","Pessoas que nunca trabalharam","Servidores que só trabalham 4 horas por dia"]},
+ {q:"Qual é a ideia central da crítica à meritocracia feita no texto?",o:["Esforço não vale nada","Todos largam do mesmo ponto, por isso vence quem se esforça mais","O esforço importa, mas as pessoas largam de pontos diferentes, e ignorar isso culpa quem partiu em desvantagem","Só quem tem diploma se esforça"]},
+ {q:"Por que o cartão rotativo e o cheque especial pesam mais para quem tem renda baixa e nenhuma reserva?",o:["Porque um imprevisto vira dívida cara, e os juros sobre juros consomem a renda","Porque o banco cobra juros só de quem ganha pouco por lei","Porque quem ganha pouco não precisa pagar a dívida","Porque esses créditos não têm juros"]}
 ];
 const $=id=>document.getElementById(id);
-const steps=["s0","s1","s2","s3","s4","s5"];
-let cur=0, resp=new Array(QUESTOES.length).fill(null);
-function show(i){cur=i;steps.forEach((s,k)=>$(s).classList.toggle("hide",k!==i));$("prog").style.width=(i/(steps.length-1)*100)+"%";window.scrollTo({top:0,behavior:"smooth"});}
+const secs=Array.from(document.querySelectorAll("section.card"));
+let resp=new Array(QUESTOES.length).fill(null);
+function show(i){secs.forEach((s,k)=>s.classList.toggle("hide",k!==i));$("prog").style.width=(i/(secs.length-1)*100)+"%";window.scrollTo({top:0,behavior:"smooth"});}
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 function hash(s){let h=0x811c9dc5;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193)>>>0;}return h.toString(16).padStart(8,"0");}
 function b64(str){const b=new TextEncoder().encode(str);let s="";b.forEach(x=>s+=String.fromCharCode(x));return btoa(s);}
 
-// questões (alternativas embaralhadas por aluno; guarda o índice original)
 const box=$("qs");
 QUESTOES.forEach((Q,qi)=>{
   const d=document.createElement("div");d.style.marginBottom="18px";
-  d.innerHTML='<div class="q">'+(qi+1)+'. '+Q.q+'</div>';
-  shuffle(Q.o.map((t,i)=>({t,i}))).forEach(op=>{
+  const t=document.createElement("div");t.className="q";t.textContent=(qi+1)+". "+Q.q;d.appendChild(t);
+  shuffle(Q.o.map((x,i)=>({x,i}))).forEach(op=>{
     const l=document.createElement("label");l.className="opt";
     l.innerHTML='<input type="radio" name="q'+qi+'"><span></span>';
-    l.querySelector("span").textContent=op.t;
+    l.querySelector("span").textContent=op.x;
     l.querySelector("input").addEventListener("change",()=>{
       resp[qi]=op.i;d.querySelectorAll(".opt").forEach(x=>x.classList.remove("sel"));l.classList.add("sel");
     });
@@ -145,29 +185,24 @@ QUESTOES.forEach((Q,qi)=>{
   box.appendChild(d);
 });
 
-$("go0").onclick=()=>{
-  const n=$("nome").value.trim(),t=$("turma").value;
-  if(n.split(/\s+/).length<2||!t){$("e0").textContent="Informe seu nome completo e a turma.";$("e0").classList.remove("hide");return;}
-  show(1);
-};
-$("go1").onclick=()=>show(2);
-$("back2").onclick=()=>show(1);
-$("go2").onclick=()=>show(3);
-$("back3").onclick=()=>show(2);
-$("go3").onclick=()=>{
-  if(resp.some(r=>r===null)){$("e3").textContent="Responda todas as questões para continuar.";$("e3").classList.remove("hide");return;}
-  $("e3").classList.add("hide");show(4);
-};
-$("back4").onclick=()=>show(3);
+document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>{
+  const to=+b.dataset.go, from=secs.findIndex(s=>!s.classList.contains("hide"));
+  if(from===0&&to===1){
+    const n=$("nome").value.trim(),t=$("turma").value;
+    if(n.split(/\s+/).length<2||!t){$("e0").textContent="Informe seu nome completo e a turma.";$("e0").classList.remove("hide");return;}
+  }
+  if(from===5&&to===6&&resp.some(r=>r===null)){$("e5").textContent="Responda todas as questões para continuar.";$("e5").classList.remove("hide");return;}
+  show(to);
+}));
 $("refl").addEventListener("input",()=>$("cnt").textContent=$("refl").value.length);
-$("go4").onclick=()=>{
+$("gen").onclick=()=>{
   const o=$("refl").value.trim();
-  if(o.length<20){$("e4").textContent="Escreva pelo menos uma ou duas frases.";$("e4").classList.remove("hide");return;}
+  if(o.length<40){$("e6").textContent="Escreva pelo menos duas frases.";$("e6").classList.remove("hide");return;}
   const n=$("nome").value.trim();
-  const p=JSON.stringify({v:1,n:n,t:$("turma").value,r:resp,o:o,d:new Date().toISOString()});
-  $("code").value="CN1-"+hash(p+SALT)+"-"+b64(p);
+  const p=JSON.stringify({v:2,n:n,t:$("turma").value,r:resp,o:o,d:new Date().toISOString()});
+  $("code").value="CN2-"+hash(p+SALT)+"-"+b64(p);
   $("who").textContent=n.split(/\s+/)[0];
-  show(5);
+  show(7);
 };
 $("copy").onclick=async()=>{
   const c=$("code");c.select();
