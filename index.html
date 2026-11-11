@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consciência Negra e Educação Financeira</title>
+<style>
+:root{--bg:#faf6ef;--card:#fff;--ink:#1f1b16;--mut:#6b625a;--ac:#b8441f;--ac2:#2f5d50;--bd:#e4dccf;--ok:#2f5d50}
+@media (prefers-color-scheme:dark){:root{--bg:#17140f;--card:#211d17;--ink:#f3ece1;--mut:#a89d8e;--ac:#e07a4f;--ac2:#6fb39e;--bd:#3a332a;--ok:#6fb39e}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 60px}
+header{padding:8px 0 4px}
+.tag{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ac);font-weight:700}
+h1{font-size:28px;line-height:1.2;margin:6px 0 4px;font-family:Georgia,serif}
+.sub{color:var(--mut);margin:0 0 14px}
+.bar{height:6px;background:var(--bd);border-radius:9px;overflow:hidden;margin:10px 0 18px}
+.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .3s}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:16px}
+h2{font-family:Georgia,serif;font-size:22px;margin:0 0 10px}
+p{margin:0 0 12px}
+label{display:block;font-weight:600;margin:12px 0 4px}
+input[type=text],select,textarea{width:100%;font:inherit;padding:11px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--ink)}
+textarea{min-height:110px;resize:vertical}
+.btn{font:inherit;font-weight:700;padding:12px 20px;border:0;border-radius:10px;background:var(--ac);color:#fff;cursor:pointer;margin-top:8px}
+.btn.sec{background:transparent;color:var(--ink);border:1px solid var(--bd);margin-right:8px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;border:1px solid var(--bd);border-radius:10px;margin:8px 0;cursor:pointer;background:var(--bg)}
+.opt input{margin-top:5px;accent-color:var(--ac)}
+.opt.sel{border-color:var(--ac);box-shadow:0 0 0 1px var(--ac)}
+.q{font-weight:700;margin-bottom:6px}
+.note{background:var(--bg);border-left:4px solid var(--ac2);padding:12px 14px;border-radius:6px;margin:14px 0;font-size:16px}
+.hide{display:none}
+.code{width:100%;font:13px/1.4 ui-monospace,Menlo,Consolas,monospace;word-break:break-all;min-height:120px}
+.small{font-size:14px;color:var(--mut)}
+.err{color:#c0392b;font-weight:600;font-size:15px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="tag">20 de novembro · Educação Financeira</div>
+  <h1>Consciência Negra, dinheiro e oportunidades</h1>
+  <p class="sub">Leia o texto, responda às questões e gere seu código para entregar ao professor.</p>
+  <div class="bar"><i id="prog"></i></div>
+</header>
+
+<!-- PASSO 0: identificação -->
+<section id="s0" class="card">
+  <h2>Antes de começar</h2>
+  <label for="nome">Seu nome completo</label>
+  <input type="text" id="nome" autocomplete="name">
+  <label for="turma">Sua turma</label>
+  <select id="turma">
+    <option value="">Selecione…</option>
+    <option>1ª D</option><option>2ª D</option><option>2ª E</option><option>3ª C (noite)</option>
+  </select>
+  <p id="e0" class="err hide"></p>
+  <button class="btn" id="go0">Começar a leitura</button>
+</section>
+
+<!-- PASSO 1: texto -->
+<section id="s1" class="card hide">
+  <h2>1. Quem foi Zumbi e por que o 20 de novembro?</h2>
+  <p>O <b>Quilombo dos Palmares</b>, na Serra da Barriga (atual Alagoas), foi o maior e mais duradouro quilombo do período colonial: uma comunidade formada por pessoas que fugiram da escravidão e construíram ali uma sociedade livre, com agricultura, comércio e organização própria. <b>Zumbi</b> foi seu último grande líder e morreu em <b>20 de novembro de 1695</b>. Por isso, essa data virou símbolo da resistência negra. Desde 2024, o <b>Dia da Consciência Negra</b> é feriado nacional.</p>
+  <h2>2. A abolição e o que veio depois</h2>
+  <p>O Brasil foi o último país das Américas a abolir a escravidão: a <b>Lei Áurea</b> é de <b>13 de maio de 1888</b>. Mas a lei não trouxe terra, moradia, trabalho remunerado, escola ou crédito para as pessoas libertas. Elas foram deixadas à própria sorte, e esse atraso se refletiu por gerações.</p>
+  <div class="note">Segundo o Censo 2022 do IBGE, pretos e pardos são mais da metade da população brasileira. Ainda assim, em média, têm renda menor do que pessoas brancas.</div>
+  <button class="btn" id="go1">Continuar</button>
+</section>
+
+<section id="s2" class="card hide">
+  <h2>3. História, patrimônio e dinheiro</h2>
+  <p><b>Patrimônio</b> é o conjunto de bens e economias de uma pessoa ou família: casa, terreno, negócio, investimentos. Ele costuma passar de geração para geração. Quem começou sem acesso a terra, estudo e crédito teve mais dificuldade de formar patrimônio, e isso ajuda a explicar parte da desigualdade de renda que existe até hoje.</p>
+  <p>Conhecer esse contexto não é para ficar parado: é para agir. A educação financeira é uma ferramenta de autonomia.</p>
+  <h2>4. Caminhos para construir autonomia</h2>
+  <p><b>Empreender com formalização.</b> Levantamentos do Sebrae indicam que pretos e pardos são maioria entre os empreendedores do país. O <b>MEI</b> (Microempreendedor Individual) permite ter CNPJ, emitir nota fiscal e contribuir para a Previdência por meio de um pagamento mensal simplificado.</p>
+  <p><b>Poupar e investir com constância.</b> Guardar uma parte da renda todo mês, mesmo pequena, e formar uma <b>reserva de emergência</b> reduz a vulnerabilidade a imprevistos e evita dívidas caras, como o rotativo do cartão e o cheque especial.</p>
+  <p><b>Acesso à informação e ao crédito consciente.</b> Comparar taxas, ler contratos e planejar antes de parcelar fortalece quem toma crédito.</p>
+  <button class="btn sec" id="back2">Voltar</button><button class="btn" id="go2">Ir para as questões</button>
+</section>
+
+<!-- PASSO 3: questões -->
+<section id="s3" class="card hide">
+  <h2>Questões</h2>
+  <p class="small">Escolha uma alternativa em cada questão. Você não verá a nota; o professor fará a correção.</p>
+  <div id="qs"></div>
+  <p id="e3" class="err hide"></p>
+  <button class="btn sec" id="back3">Voltar ao texto</button><button class="btn" id="go3">Continuar</button>
+</section>
+
+<!-- PASSO 4: reflexão -->
+<section id="s4" class="card hide">
+  <h2>Reflexão</h2>
+  <p class="q">Cite uma atitude financeira (poupar, empreender, formalizar um negócio, planejar compras…) que você pode adotar para construir mais autonomia e explique por quê. Se quiser, relacione com o que leu sobre a história.</p>
+  <textarea id="refl" maxlength="400" placeholder="Escreva com suas palavras (até 400 caracteres)"></textarea>
+  <p class="small"><span id="cnt">0</span>/400</p>
+  <p id="e4" class="err hide"></p>
+  <button class="btn sec" id="back4">Voltar</button><button class="btn" id="go4">Gerar meu código</button>
+</section>
+
+<!-- PASSO 5: código -->
+<section id="s5" class="card hide">
+  <h2>Pronto, <span id="who"></span>!</h2>
+  <p>Copie o código abaixo e envie ao professor (WhatsApp, Classroom ou mostre a tela). <b>Não altere o código.</b></p>
+  <textarea id="code" class="code" readonly></textarea>
+  <button class="btn" id="copy">Copiar código</button>
+  <p id="cok" class="small hide">Código copiado.</p>
+  <p class="small">Se errar algo, atualize a página e refaça a atividade.</p>
+</section>
+</div>
+
+<script>
+const SALT="tiradentes-consciencia-2026";
+const QUESTOES=[
+ {q:"Em que data é celebrado o Dia Nacional de Zumbi e da Consciência Negra?",o:["13 de maio","20 de novembro","7 de setembro","21 de abril"]},
+ {q:"Quem foi Zumbi dos Palmares?",o:["Um rei europeu que apoiou a abolição","O autor da Lei Áurea","Último grande líder do Quilombo dos Palmares e símbolo da resistência à escravidão","Um comerciante de pessoas escravizadas"]},
+ {q:"A Lei Áurea, de 13 de maio de 1888, foi importante porque:",o:["Garantiu terra, emprego e indenização aos libertos","Aboliu oficialmente a escravidão no Brasil, mas sem políticas de inclusão para os libertos","Criou o salário mínimo","Proibiu o trabalho infantil"]},
+ {q:"Por que a falta de acesso a terra, educação e crédito após a abolição ainda influencia a desigualdade de renda hoje?",o:["Porque dificultou a formação de patrimônio, que passa de geração em geração","Porque pessoas negras não gostam de poupar","Porque não existe relação entre história e renda","Porque o crédito é igual para todos desde 1888"]},
+ {q:"O MEI (Microempreendedor Individual) é uma alternativa para empreender porque:",o:["Dispensa qualquer pagamento de impostos","É obrigatório para todo trabalhador","Só vale para grandes empresas","Permite ter CNPJ e emitir nota fiscal com contribuição mensal simplificada"]},
+ {q:"Qual atitude ajuda a construir patrimônio e reduzir a vulnerabilidade financeira?",o:["Guardar uma parte da renda todo mês e formar uma reserva de emergência","Gastar toda a renda para aproveitar o presente","Parcelar compras sem planejamento","Evitar falar sobre dinheiro"]}
+];
+const $=id=>document.getElementById(id);
+const steps=["s0","s1","s2","s3","s4","s5"];
+let cur=0, resp=new Array(QUESTOES.length).fill(null);
+function show(i){cur=i;steps.forEach((s,k)=>$(s).classList.toggle("hide",k!==i));$("prog").style.width=(i/(steps.length-1)*100)+"%";window.scrollTo({top:0,behavior:"smooth"});}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function hash(s){let h=0x811c9dc5;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193)>>>0;}return h.toString(16).padStart(8,"0");}
+function b64(str){const b=new TextEncoder().encode(str);let s="";b.forEach(x=>s+=String.fromCharCode(x));return btoa(s);}
+
+// questões (alternativas embaralhadas por aluno; guarda o índice original)
+const box=$("qs");
+QUESTOES.forEach((Q,qi)=>{
+  const d=document.createElement("div");d.style.marginBottom="18px";
+  d.innerHTML='<div class="q">'+(qi+1)+'. '+Q.q+'</div>';
+  shuffle(Q.o.map((t,i)=>({t,i}))).forEach(op=>{
+    const l=document.createElement("label");l.className="opt";
+    l.innerHTML='<input type="radio" name="q'+qi+'"><span></span>';
+    l.querySelector("span").textContent=op.t;
+    l.querySelector("input").addEventListener("change",()=>{
+      resp[qi]=op.i;d.querySelectorAll(".opt").forEach(x=>x.classList.remove("sel"));l.classList.add("sel");
+    });
+    d.appendChild(l);
+  });
+  box.appendChild(d);
+});
+
+$("go0").onclick=()=>{
+  const n=$("nome").value.trim(),t=$("turma").value;
+  if(n.split(/\s+/).length<2||!t){$("e0").textContent="Informe seu nome completo e a turma.";$("e0").classList.remove("hide");return;}
+  show(1);
+};
+$("go1").onclick=()=>show(2);
+$("back2").onclick=()=>show(1);
+$("go2").onclick=()=>show(3);
+$("back3").onclick=()=>show(2);
+$("go3").onclick=()=>{
+  if(resp.some(r=>r===null)){$("e3").textContent="Responda todas as questões para continuar.";$("e3").classList.remove("hide");return;}
+  $("e3").classList.add("hide");show(4);
+};
+$("back4").onclick=()=>show(3);
+$("refl").addEventListener("input",()=>$("cnt").textContent=$("refl").value.length);
+$("go4").onclick=()=>{
+  const o=$("refl").value.trim();
+  if(o.length<20){$("e4").textContent="Escreva pelo menos uma ou duas frases.";$("e4").classList.remove("hide");return;}
+  const n=$("nome").value.trim();
+  const p=JSON.stringify({v:1,n:n,t:$("turma").value,r:resp,o:o,d:new Date().toISOString()});
+  $("code").value="CN1-"+hash(p+SALT)+"-"+b64(p);
+  $("who").textContent=n.split(/\s+/)[0];
+  show(5);
+};
+$("copy").onclick=async()=>{
+  const c=$("code");c.select();
+  try{await navigator.clipboard.writeText(c.value);}catch(e){document.execCommand("copy");}
+  $("cok").classList.remove("hide");
+};
+show(0);
+</script>
+</body>
+</html>
