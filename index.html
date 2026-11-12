@@ -57,8 +57,9 @@ textarea{min-height:140px;resize:vertical}
   <label for="turma">Sua turma</label>
   <select id="turma">
     <option value="">Selecione…</option>
-    <option>1ª D</option><option>2ª D</option><option>2ª E</option><option>3ª C (noite)</option>
+    <option>1ª D</option><option>2ª D</option><option>2ª E</option><option>3ª C (noite)</option><option value="__outra">Outra turma…</option>
   </select>
+  <input type="text" id="turma2" class="hide" placeholder="Digite sua turma (ex.: 1ª A manhã)" style="margin-top:8px">
   <p id="e0" class="err hide"></p>
   <button class="btn" data-go="1">Começar a leitura</button>
 </section>
@@ -186,6 +187,8 @@ let resp=new Array(QUESTOES.length).fill(null);
 function show(i){secs.forEach((s,k)=>s.classList.toggle("hide",k!==i));$("prog").style.width=(i/(secs.length-1)*100)+"%";window.scrollTo({top:0,behavior:"smooth"});}
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 function hash(s){let h=0x811c9dc5;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193)>>>0;}return h.toString(16).padStart(8,"0");}
+function getTurma(){const v=$("turma").value;return v==="__outra"?$("turma2").value.trim():v;}
+$("turma").addEventListener("change",()=>$("turma2").classList.toggle("hide",$("turma").value!=="__outra"));
 function b64(str){const b=new TextEncoder().encode(str);let s="";b.forEach(x=>s+=String.fromCharCode(x));return btoa(s);}
 
 const box=$("qs");
@@ -207,7 +210,7 @@ QUESTOES.forEach((Q,qi)=>{
 document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>{
   const to=+b.dataset.go, from=secs.findIndex(s=>!s.classList.contains("hide"));
   if(from===0&&to===1){
-    const n=$("nome").value.trim(),t=$("turma").value;
+    const n=$("nome").value.trim(),t=getTurma();
     if(n.split(/\s+/).length<2||!t){$("e0").textContent="Informe seu nome completo e a turma.";$("e0").classList.remove("hide");return;}
   }
   if(from===7&&to===8&&resp.some(r=>r===null)){$("e5").textContent="Responda todas as questões para continuar.";$("e5").classList.remove("hide");return;}
@@ -218,7 +221,7 @@ $("gen").onclick=()=>{
   const o=$("refl").value.trim();
   if(o.length<40){$("e6").textContent="Escreva pelo menos duas frases.";$("e6").classList.remove("hide");return;}
   const n=$("nome").value.trim();
-  const p=JSON.stringify({v:3,n:n,t:$("turma").value,r:resp,o:o,d:new Date().toISOString()});
+  const p=JSON.stringify({v:3,n:n,t:getTurma(),r:resp,o:o,d:new Date().toISOString()});
   $("code").value="CN3-"+hash(p+SALT)+"-"+b64(p);
   $("who").textContent=n.split(/\s+/)[0];
   show(9);
